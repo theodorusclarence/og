@@ -12,7 +12,7 @@ export default withOGImage<keyof typeof query>({
       const query = {
         title: title ?? 'Title',
         description: description ?? 'Description',
-        logo: logo ?? 'https://theodorusclarence.com/favicon/large-og.jpg',
+        logo: logo ?? 'https://og.thcl.dev/images/logo.jpg',
       };
       return `
         <html>
