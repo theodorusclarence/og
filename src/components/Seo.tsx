@@ -5,7 +5,7 @@ import { openGraph } from '@/lib/helper';
 
 const defaultMeta = {
   title: 'Open Graph Generator',
-  site_name: 'Open Graph Generator',
+  siteName: 'Open Graph Generator',
   description: 'Made for personal use by Theodorus Clarence',
   url: 'https://og.thcl.dev',
   image: 'https://og.thcl.dev/images/logo.jpg',
@@ -25,9 +25,13 @@ export default function Seo(props: SeoProps) {
     ...props,
   };
   meta['title'] = props.templateTitle
-    ? `${props.templateTitle} | ${meta.site_name}`
+    ? `${props.templateTitle} | ${meta.siteName}`
     : meta.title;
-  meta.image = openGraph(meta.title, meta.description);
+  meta.image = openGraph({
+    siteName: defaultMeta.siteName,
+    description: defaultMeta.description,
+    templateTitle: props.templateTitle,
+  });
 
   return (
     <Head>
@@ -38,7 +42,7 @@ export default function Seo(props: SeoProps) {
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
       {/* Open Graph */}
       <meta property='og:type' content={meta.type} />
-      <meta property='og:site_name' content={meta.site_name} />
+      <meta property='og:site_name' content={meta.siteName} />
       <meta property='og:description' content={meta.description} />
       <meta property='og:title' content={meta.title} />
       <meta name='image' property='og:image' content={meta.image} />
