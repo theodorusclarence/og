@@ -1,27 +1,40 @@
 import { withOGImage } from 'next-api-og-image';
 
-enum query {
+enum QueryEnum {
   'logo',
   'siteName',
   'description',
   'theme',
   'templateTitle',
+  'logoWidth',
+  'logoHeight',
 }
 
-export default withOGImage<keyof typeof query>({
+export default withOGImage<keyof typeof QueryEnum>({
   template: {
-    html: async ({ siteName, description, logo, theme, templateTitle }) => {
+    html: async ({
+      siteName,
+      description,
+      logo,
+      theme,
+      templateTitle,
+      logoWidth,
+      logoHeight,
+    }) => {
       const query = {
         siteName: siteName ?? 'Site Name',
         description: description ?? 'Description',
         logo: logo ?? 'https://og.thcl.dev/images/logo.jpg',
         theme: theme ?? 'dark',
         templateTitle,
+        logoWidth: logoWidth ?? '100',
+        logoHeight,
       };
+
       return `
         <html>
           <head>
-            ${getStyle(query.theme)}
+            ${getStyle(query)}
           </head>
           <body>
             <div class="container">
@@ -42,7 +55,8 @@ export default withOGImage<keyof typeof query>({
   },
 });
 
-const getStyle = (theme: string | string[]) => `
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getStyle = (query: Record<keyof typeof QueryEnum, string | string[]>) => `
 <style>
   *,
   *::before,
@@ -76,15 +90,16 @@ const getStyle = (theme: string | string[]) => `
     justify-content: center;
     align-items: center;
 
-    background: ${theme === 'dark' ? '#222' : '#fff'};
-    color: ${theme === 'dark' ? 'white' : 'black'};
+    background: ${query.theme === 'dark' ? '#222' : '#fff'};
+    color: ${query.theme === 'dark' ? 'white' : 'black'};
 
     text-align: center;
     padding: 0 5rem;
   }
 
   img {
-    max-width: 100px;
+    width: ${query.logoWidth}px;
+    ${query.logoHeight && `height: ${query.logoHeight}px`}
   }
 
   h1 {
@@ -96,7 +111,7 @@ const getStyle = (theme: string | string[]) => `
 
   h3 {
     margin-top: 0.5rem;
-    color: ${theme === 'dark' ? '#E5E7EB' : '#374151'};
+    color: ${query.theme === 'dark' ? '#E5E7EB' : '#374151'};
     font-size: 1.5rem;
   }
   
@@ -104,7 +119,7 @@ const getStyle = (theme: string | string[]) => `
     font-size: 1.8rem;
     line-height: 1.5;
     margin-top: 1rem;
-    color: ${theme === 'dark' ? '#D1D5DB' : '#1F2937'};
+    color: ${query.theme === 'dark' ? '#D1D5DB' : '#1F2937'};
   }
 </style>
 `;
