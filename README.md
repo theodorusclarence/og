@@ -1,258 +1,44 @@
-# Next.js + Tailwind CSS + TypeScript Starter
+# Open Graph Generator
 
-[![CodeFactor](https://www.codefactor.io/repository/github/theodorusclarence/ts-nextjs-tailwind-starter/badge/main)](https://www.codefactor.io/repository/github/theodorusclarence/ts-nextjs-tailwind-starter/overview/main)
-[![Depfu](https://badges.depfu.com/badges/fc6e730632ab9dacaf7df478a08684a7/overview.svg)](https://depfu.com/github/theodorusclarence/ts-nextjs-tailwind-starter?project_id=30160)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=theodorusclarence_ts-nextjs-tailwind-starter&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=theodorusclarence_ts-nextjs-tailwind-starter)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=theodorusclarence_ts-nextjs-tailwind-starter&metric=bugs)](https://sonarcloud.io/dashboard?id=theodorusclarence_ts-nextjs-tailwind-starter)
+🍇 Open Graph Generator made using [next-api-og-image](https://github.com/neg4n/next-api-og-image) for personal use.
 
-This is a Next.js, Tailwind CSS, and Typescript project bootstrapped using [ts-nextjs-tailwind-starter](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter) created by [Theodorus Clarence](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter).
+Feel free to fork it and use it for your website!
 
-![ts-nextjs-tailwind-starter](https://socialify.git.ci/theodorusclarence/ts-nextjs-tailwind-starter/image?description=1&descriptionEditable=A%20starter%20for%20Next.js%2C%20Tailwind%20CSS%2C%20and%20Typescript%20with%20Absolute%20Import%2C%20Seo%2C%20Link%20component%2C%20pre-configured%20with%20Husky.&language=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
+## General OG
 
-## Getting Started
+### Light Mode & Site Name Only
 
-### 1. To use this template you can use one of the three ways:
+![image](https://user-images.githubusercontent.com/55318172/137609366-6cbdfd78-0f67-4225-977b-0408404c8127.png)
 
-1. Using `create-next-app`
+Query:
 
-```bash
-npx create-next-app -e https://github.com/theodorusclarence/ts-nextjs-tailwind-starter project-name
-```
+`/api/general?siteName=Your Site Name&description=Lorem ipsum&theme=light`
 
-2. Use this repository as template
+### Light Mode & Template Title
 
-![image](https://user-images.githubusercontent.com/55318172/129183039-1a61e68d-dd90-4548-9489-7b3ccbb35810.png)
+![image](https://user-images.githubusercontent.com/55318172/137609439-337ada28-69d7-4dbd-a5f5-e62488c3e16e.png)
 
-3. Deploy to Vercel
+`/api/general?templateTitle=Page Name&siteName=Your Site Name&description=Lorem ipsum&theme=light`
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftheodorusclarence%2Fts-nextjs-tailwind-starter)
 
-### 2. Run the development server
+### Dark Mode & Site Name Only
 
-It is encouraged to use yarn so the husky hooks can work properly.
+![image](https://user-images.githubusercontent.com/55318172/137609541-e2181783-da0a-41fe-a475-8a685ad605fb.png)
 
-```bash
-yarn dev
-```
+`/api/general?siteName=Your Site Name&description=Lorem ipsum&theme=dark`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `src/pages/index.tsx`. The page auto-updates as you edit the file.
+### Dark Mode & Template Title
 
-### 3. Refer to the [usage guide](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter#usage-guide)
+![image](https://user-images.githubusercontent.com/55318172/137609516-8b5fa579-580a-457d-8a6d-fbf530ba702b.png)
 
-## What's Inside
+`/api/general?templateTitle=Page Name&siteName=Your Site Name&description=Lorem ipsum&theme=dark`
 
-### 1. Installed Package
+### Custom Logo
 
-1. [clsx](https://bundlephobia.com/package/clsx@latest), utility for constructing `className` strings conditionally.
-2. [react-icons](https://bundlephobia.com/package/react-icons@latest), svg react icons of popular icon packs.
+You can also customize logo by specifying `logo`, width is defaulted to 100px.
 
-### 2. UnstyledLink Component
+Or you can also add `logoWidth` and `logoHeight` by specifying pixel number
 
-Used as a component for Next.js Link. Will render out Next/Link if the href started with `/` or `#`, else will render an `a` tag with `target='_blank'`. Also add a cursor style for outside links
+![image](https://user-images.githubusercontent.com/55318172/137609591-e17d1294-4a50-4bc1-8c5a-7adbca99ced8.png)
 
-### 3. CustomLink Component
-
-![customlink](https://user-images.githubusercontent.com/55318172/129183546-4e8c2059-0493-4459-a1e9-755fbd32fe39.gif)
-
-**All Components Demo:**
-
-Check it out yourself on [the deployment](https://ts-nextjs-tailwind-starter.theodorusclarence.com/components).
-
-https://user-images.githubusercontent.com/55318172/136921766-470eba67-6f5e-4066-9f37-a6ea825d6cd4.mov
-
-### 4. Absolute Import
-
-You can import without using relative path
-
-```tsx
-import Nav from '../../../components/Nav';
-
-simplified to
-
-import Nav from '@/components/Nav';
-```
-
-### 5. Seo Component
-
-Configure the default in `src/components/Seo.tsx`. If you want to use the default, just add `<Seo />` on top of your page.
-
-You can also customize it per page by overriding the title, description as props
-
-```tsx
-<Seo title='Next.js Tailwind Starter' description='your description' />
-```
-
-or if you want to still keep the title like `%s | Next.js Tailwind Starter`, you can use `templateTitle` props.
-
-### 6. Custom 404 Page
-
-![404](https://user-images.githubusercontent.com/55318172/129184274-d90631f2-6688-4ed2-bef2-a4d018a4863c.gif)
-
-### 7. Workspace Snippets
-
-Snippets such as React import, useState, useEffect, React Component. [View more](/.vscode/typescriptreact.code-snippets)
-
-### 8. Husky, Prettier, Lint, and Commitlint Configured
-
-3 Husky hooks including:
-
-1. pre-commit, running `next lint` and format the code using prettier
-2. commit-msg, running commitlint to ensure the use of [Conventional Commit](https://theodorusclarence.com/library/conventional-commit-readme) for commit messages
-3. post-merge, running `yarn` every `git pull` or after merge to ensure all new packages are installed and ready to go
-
-### 9. Default Favicon Declaration
-
-Use [Favicon Generator](https://www.favicon-generator.org/) and then overwrite the files in `/public/favicon`
-
-### 10. Default Tailwind CSS Base Styles
-
-There are default styles for responsive heading sizes, and `.layout` to support a max-width for larger screen size. Find more about it on [my blog post](https://theodorusclarence.com/blog/tailwindcss-best-practice#1-using-layout-class-or-container)
-
-### 11. Preloaded & Self Hosted Inter Fonts
-
-Inter fonts is a variable fonts that is self hosted and preloaded.
-
-## Usage Guide
-
-### 1. Change defaults
-There are some things you need to change including title, urls, favicons, etc. Here are the list
-
-#### `components/Seo.tsx`
-
-Change title, sitename, url, and opengraph image
-```tsx
-const defaultMeta = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
-  site_name: 'Next.js + Tailwind CSS + TypeScript Starter',
-  description:
-    ' A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
-  url: 'https://theodorusclarence.com',
-  image: 'https://theodorusclarence.com/favicon/large-og.jpg',
-  type: 'website',
-  robots: 'follow, index',
-};
-```
-
-#### `next-sitemap.js`
-
-Change the siteUrl to generate sitemap correctly
-
-```js
-module.exports = {
-  siteUrl: 'https://ts-nextjs-tailwind-starter.theodorusclarence.com/',
-  generateRobotsTxt: true,
-  robotsTxtOptions: {
-    policies: [{ userAgent: '*', allow: '/' }],
-  },
-};
-```
-
-#### `package.json`
-
-Change the package name to your project name.
-
-#### `public/favicon`
-
-Favicon are generated from [favicon-generator site](https://favicon-generator.org), generate a new favicon and replace all of favicons inside.
-
-### 2. Commit Message Convention
-
-This starter is using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), it is mandatory to use it to commit changes.
-
-## Snippets
-
-This starter is equipped with workspace-snippets, it is encouraged to use it, especially the `np` and `rc`
-
-### Next.js Page
-
-File inside `src/pages` will be the webpage route, there are 2 things that need to be added in Next.js page:
-
-1. Seo component
-2. Layout class to give constraint to viewport width. [Read more about layout class](https://theodorusclarence.com/blog/tailwindcss-best-practice#1-using-layout-class-or-container).
-
-Snippets: `np`
-
-```tsx
-import * as React from 'react';
-import Seo from '@/components/Seo';
-export default function TestPage() {
-  return (
-    <>
-      <Seo templateTitle='Test' />
-      <main>
-        <section className=''>
-          <div className='layout'>
-            
-          </div>
-        </section>
-      </main>
-    </>
-  )
-}
-```
-
-### React Components
-
-To make a new component, It is encouraged to use `export default function`. Because when we need to rename it, we only need to do it once.
-
-Snippets: `rc`
-
-```tsx
-import * as React from 'react'
-export default function Component() {
-  return <div></div>
-}
-```
-
-### Import React
-
-Snippets: `ir`
-
-```tsx
-import * as React from 'react'
-```
-
-### useState Hook
-
-Snippets: `us`
-
-```tsx
-const [state, setState] = React.useState(initialState)
-```
-
-### useEffect Hook
-
-Snippets: `uf`
-
-```tsx
-React.useEffect(() => {}, [])
-```
-
-### useReducer Hook
-
-Snippets: `ur`
-
-```tsx
-const [state, dispatch] = React.useReducer(someReducer, {})
-```
-
-### useRef Hook
-
-Snippets: `urf`
-
-```tsx
-const someRef = React.useRef()
-```
-
-### Region Comment
-
-It is really useful when we need to group code. It is also collapsible in VSCode
-
-Snippets: `reg`
-
-```tsx
-//#region  //*============== FORM SUBMIT
-//#endregion  //*============== FORM SUBMIT
-```
-
-You should also use [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) extension.
+`/api/general?siteName=Your Site Name&description=Lorem ipsum&theme=dark&logo=https://docs.thcl.dev/apple-icon-180x180.png&logoWidth=120`
