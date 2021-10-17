@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/theodorusclarence/og/compare/v0.1.1...v0.2.0) (2021-10-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* add siteName and templateTitle
+
+### Features
+
+* add logoWidth and logoHeight ([8be4568](https://github.com/theodorusclarence/og/commit/8be45687115d614f95ca18859dced2f76f572a56))
+* add siteName and templateTitle ([52be839](https://github.com/theodorusclarence/og/commit/52be83968ae9c634fcd31e10afda6526b8ef2c1a))
+
 ### 0.1.1 (2021-10-17)
 
 
