@@ -2,27 +2,37 @@ import { withOGImage } from 'next-api-og-image';
 
 enum query {
   'logo',
-  'title',
+  'siteName',
   'description',
+  'theme',
+  'templateTitle',
 }
 
 export default withOGImage<keyof typeof query>({
   template: {
-    html: async ({ title, description, logo }) => {
+    html: async ({ siteName, description, logo, theme, templateTitle }) => {
       const query = {
-        title: title ?? 'Title',
+        siteName: siteName ?? 'Site Name',
         description: description ?? 'Description',
         logo: logo ?? 'https://og.thcl.dev/images/logo.jpg',
+        theme: theme ?? 'dark',
+        templateTitle,
       };
       return `
         <html>
           <head>
-            ${style}
+            ${getStyle(query.theme)}
           </head>
           <body>
             <div class="container">
               <img src="${query.logo}" alt="Favicon" />
-              <h1>${query.title}</h1>
+              ${
+                query.templateTitle
+                  ? `<h1>${query.templateTitle}</h1>
+                  <h3>${query.siteName}</h3>`
+                  : `<h1>${query.siteName}</h1>`
+              }
+              
               <p class="description">${query.description}</p>
             </div>
           </body>
@@ -32,7 +42,7 @@ export default withOGImage<keyof typeof query>({
   },
 });
 
-const style = `
+const getStyle = (theme: string | string[]) => `
 <style>
   *,
   *::before,
@@ -66,8 +76,8 @@ const style = `
     justify-content: center;
     align-items: center;
 
-    background: #222;
-    color: white;
+    background: ${theme === 'dark' ? '#222' : '#fff'};
+    color: ${theme === 'dark' ? 'white' : 'black'};
 
     text-align: center;
     padding: 0 5rem;
@@ -81,13 +91,20 @@ const style = `
     font-size: 1.5rem;
     font-size: 3.5rem;
     line-height: 1.1;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  h3 {
+    margin-top: 0.5rem;
+    color: ${theme === 'dark' ? '#E5E7EB' : '#374151'};
+    font-size: 1.5rem;
   }
   
   .description {
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.5;
     margin-top: 1rem;
+    color: ${theme === 'dark' ? '#D1D5DB' : '#1F2937'};
   }
 </style>
 `;
