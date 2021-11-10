@@ -61,6 +61,9 @@ export default withOGImage<'query', keyof typeof QueryEnum>({
       `;
     },
   },
+  dev: {
+    inspectHtml: false,
+  },
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -126,6 +129,7 @@ const getStyle = (query: Record<keyof typeof QueryEnum, string | string[]>) => `
   .gradient {
     background-image: linear-gradient(to top right, #00e887, #00e0f3);
     color: transparent;
+    -webkit-background-clip: text;
     background-clip: text;
   }
   
