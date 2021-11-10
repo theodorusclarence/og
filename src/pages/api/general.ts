@@ -1,6 +1,6 @@
 import { withOGImage } from 'next-api-og-image';
 
-enum QueryEnum {
+export enum GeneralQueryEnum {
   'logo',
   'siteName',
   'description',
@@ -10,7 +10,7 @@ enum QueryEnum {
   'logoHeight',
 }
 
-export default withOGImage<'query', keyof typeof QueryEnum>({
+export default withOGImage<'query', keyof typeof GeneralQueryEnum>({
   template: {
     html: async ({
       siteName,
@@ -56,7 +56,9 @@ export default withOGImage<'query', keyof typeof QueryEnum>({
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getStyle = (query: Record<keyof typeof QueryEnum, string | string[]>) => `
+const getStyle = (
+  query: Record<keyof typeof GeneralQueryEnum, string | string[]>
+) => `
 <style>
   *,
   *::before,
