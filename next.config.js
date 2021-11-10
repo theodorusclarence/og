@@ -3,5 +3,4 @@ module.exports = {
   eslint: {
     dirs: ['src'],
   },
-  images: ['og.thcl.dev'],
 };
