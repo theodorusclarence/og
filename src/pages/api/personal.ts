@@ -6,7 +6,7 @@ enum query {
   'description',
 }
 
-export default withOGImage<keyof typeof query>({
+export default withOGImage<'query', keyof typeof query>({
   template: {
     html: async ({ title, type, description }) => {
       const query = {

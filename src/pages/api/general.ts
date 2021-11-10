@@ -10,7 +10,7 @@ enum QueryEnum {
   'logoHeight',
 }
 
-export default withOGImage<keyof typeof QueryEnum>({
+export default withOGImage<'query', keyof typeof QueryEnum>({
   template: {
     html: async ({
       siteName,
