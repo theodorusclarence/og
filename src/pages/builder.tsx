@@ -72,6 +72,7 @@ export default function BuildPage() {
                     >
                       <option value='general'>general</option>
                       <option value='gradient'>gradient</option>
+                      <option value='blog'>blog</option>
                     </SelectInput>
                     <Input id='siteName' label='siteName' />
                     <Input id='description' label='description' />
@@ -84,6 +85,11 @@ export default function BuildPage() {
                       id='logo'
                       label='Logo Links'
                       helperText='default: https://og.thcl.dev/images/logo.jpg'
+                    />
+                    <Input
+                      id='banner'
+                      label='Banner Links'
+                      helperText='This is only for /blog'
                     />
                     <div className='flex gap-2'>
                       <Input
