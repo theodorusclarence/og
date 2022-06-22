@@ -4,6 +4,10 @@
 
 Feel free to fork it and use it for your website!
 
+## Deployment to Vercel
+
+**IMPORTANT**, you need to change the Node version on Vercel to 14.x.x
+
 ## General OG
 
 ### Light Mode & Site Name Only
@@ -19,7 +23,6 @@ Query:
 ![image](https://user-images.githubusercontent.com/55318172/137609439-337ada28-69d7-4dbd-a5f5-e62488c3e16e.png)
 
 `/api/general?templateTitle=Page Name&siteName=Your Site Name&description=Lorem ipsum&theme=light`
-
 
 ### Dark Mode & Site Name Only
 
