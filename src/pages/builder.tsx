@@ -13,9 +13,9 @@ import { GeneralQueryEnum } from '@/pages/api/general';
 type Query = Record<keyof typeof GeneralQueryEnum | 'ogType', string>;
 
 export default function BuildPage() {
-  const [link, setLink] = React.useState('https://og.thcl.dev/api/general');
+  const [link, setLink] = React.useState('https://og.clarence.link/api/general');
   const [imgLink, setImgLink] = React.useState(
-    'https://og.thcl.dev/api/general'
+    'https://og.clarence.link/api/general'
   );
 
   //#region  //*=========== Forms ===========
