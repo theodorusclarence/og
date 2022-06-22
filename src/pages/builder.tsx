@@ -34,7 +34,7 @@ export default function BuildPage() {
     const { ogType, ...rest } = formData;
     const qurl = queryString.stringifyUrl(
       {
-        url: `https://og.thcl.dev/api/${ogType}`,
+        url: `https://og.clarence.link/api/${ogType}`,
         query: { ...rest },
       },
       {
@@ -84,7 +84,7 @@ export default function BuildPage() {
                     <Input
                       id='logo'
                       label='Logo Links'
-                      helperText='default: https://og.thcl.dev/images/logo.jpg'
+                      helperText='default: https://og.clarence.link/images/logo.jpg'
                     />
                     <Input
                       id='banner'
