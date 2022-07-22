@@ -1,5 +1,7 @@
 import { withOGImage } from 'next-api-og-image';
 
+import { deploymentURL } from '@/constant/env';
+
 enum query {
   'title',
   'type',
@@ -22,7 +24,7 @@ export default withOGImage<'query', keyof typeof query>({
           <body>
             <div class="container">
               <header>
-                <img src="https://og.thcl.dev/images/logo.jpg" alt="Favicon" />
+                <img src="${deploymentURL}/images/logo.jpg" alt="Favicon" />
                 <div class="right">
                   <h2>${query.type} by</h2>
                   <p class="gradient">Theodorus Clarence</p>

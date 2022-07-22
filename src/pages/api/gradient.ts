@@ -1,5 +1,7 @@
 import { withOGImage } from 'next-api-og-image';
 
+import { deploymentURL } from '@/constant/env';
+
 enum QueryEnum {
   'logo',
   'siteName',
@@ -24,7 +26,7 @@ export default withOGImage<'query', keyof typeof QueryEnum>({
       const query = {
         siteName: siteName ?? 'Site Name',
         description: description ?? 'Description',
-        logo: logo ?? 'https://og.thcl.dev/images/logo.jpg',
+        logo: logo ?? `${deploymentURL}/images/logo.jpg`,
         theme: theme ?? 'dark',
         templateTitle,
         logoWidth: logoWidth ?? '100',

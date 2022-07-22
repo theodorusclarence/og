@@ -8,15 +8,14 @@ import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
 import Seo from '@/components/Seo';
 
+import { deploymentURL } from '@/constant/env';
 import { GeneralQueryEnum } from '@/pages/api/general';
 
 type Query = Record<keyof typeof GeneralQueryEnum | 'ogType', string>;
 
 export default function BuildPage() {
-  const [link, setLink] = React.useState('https://og.thcl.dev/api/general');
-  const [imgLink, setImgLink] = React.useState(
-    'https://og.thcl.dev/api/general'
-  );
+  const [link, setLink] = React.useState(`${deploymentURL}/api/general`);
+  const [imgLink, setImgLink] = React.useState(`${deploymentURL}/api/general`);
 
   //#region  //*=========== Forms ===========
   const methods = useForm<Query>({
@@ -34,7 +33,7 @@ export default function BuildPage() {
     const { ogType, ...rest } = formData;
     const qurl = queryString.stringifyUrl(
       {
-        url: `https://og.thcl.dev/api/${ogType}`,
+        url: `${deploymentURL}/api/${ogType}`,
         query: { ...rest },
       },
       {
@@ -84,7 +83,7 @@ export default function BuildPage() {
                     <Input
                       id='logo'
                       label='Logo Links'
-                      helperText='default: https://og.thcl.dev/images/logo.jpg'
+                      helperText={`default: ${deploymentURL}/images/logo.jpg`}
                     />
                     <Input
                       id='banner'
