@@ -38,10 +38,13 @@ export default function SelectInput({
     children,
     (child) => {
       if (React.isValidElement(child)) {
-        return React.cloneElement(child, {
-          disabled: child.props.value !== rest?.defaultValue,
-          // selected: child.props.value === rest?.defaultValue,
-        });
+        return React.cloneElement(
+          child as React.ReactElement<SelectInputProps>,
+          {
+            disabled: child.props.value !== rest?.defaultValue,
+            // selected: child.props.value === rest?.defaultValue,
+          }
+        );
       }
     }
   );

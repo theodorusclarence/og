@@ -15,8 +15,8 @@ export default function HomePage() {
             <h1>Open Graph Generator</h1>
             <p className='mt-2 text-sm text-gray-600'>
               Made for personal use using{' '}
-              <CustomLink href='https://github.com/neg4n/next-api-og-image'>
-                next-api-og-image
+              <CustomLink href='https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation'>
+                @vercel/og
               </CustomLink>
             </p>
             <div className='flex flex-wrap gap-2 mt-4 text-sm text-gray-500'>

@@ -9,9 +9,20 @@ import SelectInput from '@/components/forms/SelectInput';
 import Seo from '@/components/Seo';
 
 import { deploymentURL } from '@/constant/env';
-import { GeneralQueryEnum } from '@/pages/api/general';
 
-type Query = Record<keyof typeof GeneralQueryEnum | 'ogType', string>;
+const queryKeys = [
+  'siteName',
+  'description',
+  'templateTitle',
+  'logo',
+  'banner',
+  'logoWidth',
+  'logoHeight',
+  'theme',
+  'ogType',
+];
+
+type Query = Record<typeof queryKeys[number], string>;
 
 export default function BuildPage() {
   const [link, setLink] = React.useState(`${deploymentURL}/api/general`);
