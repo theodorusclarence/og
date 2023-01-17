@@ -1,6 +1,6 @@
 # Open Graph Generator
 
-🍇 Open Graph Generator made using [next-api-og-image](https://github.com/neg4n/next-api-og-image) for personal use.
+🍇 Open Graph Generator made using [@vercel/og](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) for personal use.
 
 Feel free to fork it and use it for your website!
 
@@ -19,8 +19,7 @@ You can achieve deployment fully from the website without cloning the repository
 
 There are some configurations that you need to do:
 
-1.  Set the Node.js Version to 14.x. **Settings > General > Node.js Version: 14.x**
-2.  Add the following to the environment variables. **Settings > Environment Variables**
+1.  Add the following to the environment variables. **Settings > Environment Variables**
 
 | Name                       | Value                   |
 | -------------------------- | ----------------------- |
