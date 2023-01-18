@@ -13,10 +13,6 @@ export const inter700 = fetch(
   new URL('../../assets/Inter-Bold.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
-export const ttCommons400 = fetch(
-  new URL('../../assets/TT-Commons-Regular.otf', import.meta.url)
-).then((res) => res.arrayBuffer());
-
 export const ttCommons700 = fetch(
   new URL('../../assets/TT-Commons-Bold.otf', import.meta.url)
 ).then((res) => res.arrayBuffer());
@@ -28,13 +24,11 @@ export const config = {
 export default async function handler(req: NextRequest) {
   const interRegular = await inter400;
   const interBold = await inter700;
-  const ttCommonsRegular = await ttCommons400;
   const ttCommonsBold = await ttCommons700;
 
   const { searchParams } = new URL(req.url);
 
   const description = searchParams.get('description');
-  const logo = searchParams.get('logo');
 
   const query = {
     siteName: 'StockSelect',
@@ -42,7 +36,7 @@ export default async function handler(req: NextRequest) {
       description && description.length > 98
         ? description.slice(0, 98) + '...'
         : description,
-    logo: logo ?? `${deploymentURL}/images/logo.jpg`,
+    logo: `${deploymentURL}/images/logo.jpg`,
   };
 
   return new ImageResponse(
@@ -74,15 +68,14 @@ export default async function handler(req: NextRequest) {
         <h1 tw={clsx('mt-[27px]', 'text-[70px] font-medium', 'text-[#2C3763]')}>
           {query.siteName}
         </h1>
-        {query.description && (
+        {query.description ? (
           <p
             tw={clsx('text-[55px] font-medium mt-[20px] w-full p-0 m-0')}
             style={{ fontFamily: 'TTCommons' }}
           >
             {query.description}
           </p>
-        )}
-        {!query.description && (
+        ) : (
           <p
             tw={clsx('text-[60px] font-medium mt-[20px] w-full p-0 m-0')}
             style={{ fontFamily: 'TTCommons' }}
@@ -106,11 +99,6 @@ export default async function handler(req: NextRequest) {
           name: 'Inter',
           data: interBold,
           weight: 700,
-        },
-        {
-          name: 'TTCommons',
-          data: ttCommonsRegular,
-          weight: 400,
         },
         {
           name: 'TTCommons',
