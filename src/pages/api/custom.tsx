@@ -38,7 +38,10 @@ export default async function handler(req: NextRequest) {
 
   const query = {
     siteName: 'StockSelect',
-    description,
+    description:
+      description && description.length > 98
+        ? description.slice(0, 98) + '...'
+        : description,
     logo: logo ?? `${deploymentURL}/images/logo.jpg`,
   };
 
