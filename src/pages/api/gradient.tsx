@@ -3,6 +3,7 @@ import { ImageResponse } from '@vercel/og';
 import clsx from 'clsx';
 import { NextRequest } from 'next/server';
 import { CSSProperties } from 'react';
+import React from 'react';
 
 import { deploymentURL } from '@/constant/env';
 

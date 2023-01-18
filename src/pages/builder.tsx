@@ -83,6 +83,7 @@ export default function BuildPage() {
                       <option value='general'>general</option>
                       <option value='gradient'>gradient</option>
                       <option value='blog'>blog</option>
+                      <option value='custom'>custom</option>
                     </SelectInput>
                     <Input id='siteName' label='siteName' />
                     <Input id='description' label='description' />
