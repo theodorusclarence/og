@@ -51,8 +51,7 @@ export default async function handler(req: NextRequest) {
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          padding: '0',
-          margin: '0',
+          padding: '0 0.5rem',
           backgroundColor: '#EBF3FF',
           color: '#2C3763',
         }}
@@ -70,14 +69,14 @@ export default async function handler(req: NextRequest) {
         </h1>
         {query.description ? (
           <p
-            tw={clsx('text-[55px] font-medium mt-[20px] w-full p-0 m-0')}
+            tw={clsx('text-[55px] font-medium mt-[20px]')}
             style={{ fontFamily: 'TTCommons' }}
           >
             {query.description}
           </p>
         ) : (
           <p
-            tw={clsx('text-[60px] font-medium mt-[20px] w-full p-0 m-0')}
+            tw={clsx('text-[60px] font-medium mt-[20px] w-full')}
             style={{ fontFamily: 'TTCommons' }}
           >
             Find Your <span tw='font-bold ml-4 font-bold'>Best Investment</span>
