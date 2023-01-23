@@ -79,7 +79,7 @@ export default async function handler(req: NextRequest) {
             tw={clsx('text-[60px] font-medium mt-[20px]')}
             style={{ fontFamily: 'TTCommons' }}
           >
-            Find Your <span tw='font-bold ml-4 font-bold'>Best Investment</span>
+            Pick The <span tw='font-bold ml-4 font-bold'>Best Stocks</span>
           </p>
         )}
       </div>
