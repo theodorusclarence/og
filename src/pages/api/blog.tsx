@@ -44,7 +44,7 @@ export default async function handler(req: NextRequest) {
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          backgroundColor: '#222',
+          backgroundColor: 'rgba(14,17,17,1)',
         }}
       >
         <div
@@ -143,7 +143,7 @@ export default async function handler(req: NextRequest) {
               <div
                 style={{
                   backgroundImage:
-                    'linear-gradient(to right, rgba(34,34,34,1), rgba(0,0,0,0))',
+                    'linear-gradient(to right, rgba(14,17,17,1), rgba(0,0,0,0))',
                 }}
                 tw={clsx(['absolute inset-0 '])}
               ></div>
