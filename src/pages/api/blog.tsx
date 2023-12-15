@@ -24,10 +24,12 @@ export default async function handler(req: NextRequest) {
 
   const templateTitle = searchParams.get('templateTitle');
   const banner = searchParams.get('banner');
+  const tags = searchParams.get('tags');
 
   const query = {
     templateTitle: templateTitle ?? 'Blog Title',
     banner,
+    tags: tags?.split(',') ?? [],
   };
 
   return new ImageResponse(
@@ -86,6 +88,20 @@ export default async function handler(req: NextRequest) {
                 {query.templateTitle}
               </span>
             </h1>
+            <div tw='flex'>
+              {query.tags.map((tag, i) => (
+                <div
+                  key={tag}
+                  tw={clsx([
+                    'inline-block rounded-md px-1.5 py-0.5 font-medium text-lg',
+                    'bg-gray-700 text-gray-200',
+                    i !== 0 && 'ml-2',
+                  ])}
+                >
+                  {tag}
+                </div>
+              ))}
+            </div>
 
             <div
               style={{
