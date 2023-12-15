@@ -42,7 +42,6 @@ export default async function handler(req: NextRequest) {
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          padding: '4rem 3rem',
           backgroundColor: '#222',
         }}
       >
@@ -63,6 +62,7 @@ export default async function handler(req: NextRequest) {
               height: '100%',
               width: '0%',
               flexGrow: 1,
+              padding: '4rem 0 5rem 3rem',
             }}
           >
             <h3
@@ -123,7 +123,14 @@ export default async function handler(req: NextRequest) {
 
           {banner && (
             <div style={{ display: 'flex' }}>
-              <img tw={clsx('h-[83vh] block')} src={banner} alt='Banner' />
+              <img tw={clsx('h-[100vh] block')} src={banner} alt='Banner' />
+              <div
+                style={{
+                  backgroundImage:
+                    'linear-gradient(to right, rgba(34,34,34,1), rgba(0,0,0,0))',
+                }}
+                tw={clsx(['absolute inset-0 '])}
+              ></div>
             </div>
           )}
         </div>
