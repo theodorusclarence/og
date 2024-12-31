@@ -114,7 +114,7 @@ export default async function handler(req: NextRequest) {
             >
               <img
                 tw='w-[80px] rounded-full'
-                src='https://res.cloudinary.com/theodorusclarence/image/upload/c_fill,g_auto:face,h_160,w_160/v1673957822/theodorusclarence/about/self-3_square_jtiwai.jpg'
+                src='https://res.cloudinary.com/theodorusclarence/image/upload/c_fill,g_auto:face,h_160,w_160/v1673957822/theodorusclarence/about/me-2024.jpg'
                 alt='Photo of me'
               />
               <div
