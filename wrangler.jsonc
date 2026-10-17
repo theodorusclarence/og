@@ -3,7 +3,10 @@
   "name": "og",
   "main": "worker/index.ts",
   "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
   "compatibility_flags": ["nodejs_compat"],
+  "routes": [{ "pattern": "og.clarence.link", "custom_domain": true }],
   "assets": {
     "directory": "./out",
     "binding": "ASSETS",
