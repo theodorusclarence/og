@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-sitemap && next export",
     "start": "next start",
     "prepare": "husky install",
     "lint": "next lint",
@@ -12,11 +12,13 @@
     "format": "prettier --write src",
     "release": "standard-version",
     "push-release": "git push --follow-tags origin main",
-    "postbuild": "next-sitemap"
+    "deploy": "yarn build && wrangler deploy",
+    "preview": "yarn build && wrangler dev",
+    "typecheck": "tsc --noEmit && tsc -p worker/tsconfig.json"
   },
   "dependencies": {
+    "@cf-wasm/og": "^0.5.0",
     "@tailwindcss/forms": "^0.3.4",
-    "@vercel/og": "^0.0.27",
     "autoprefixer": "^10.4.0",
     "clsx": "^1.1.1",
     "next": "^13.1.2",
@@ -28,6 +30,7 @@
     "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261016.1",
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
     "@types/node": "^18.11.18",
@@ -45,7 +48,8 @@
     "prettier": "^2.5.1",
     "standard-version": "^9.3.2",
     "tailwindcss": "^2.2.19",
-    "typescript": "^4.9.4"
+    "typescript": "^5",
+    "wrangler": "^4.151.1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,}": [

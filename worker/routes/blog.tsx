@@ -1,24 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import { ImageResponse } from '@vercel/og';
+import { ImageResponse } from '@cf-wasm/og/workerd';
 import clsx from 'clsx';
-import { NextRequest } from 'next/server';
 import { CSSProperties } from 'react';
 
-export const inter400 = fetch(
-  new URL('../../assets/Inter-Regular.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
+import { loadAsset } from '../assets';
 
-export const inter500 = fetch(
-  new URL('../../assets/Inter-Medium.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
-
-export const config = {
-  runtime: 'experimental-edge',
-};
-
-export default async function handler(req: NextRequest) {
-  const interRegular = await inter400;
-  const interMedium = await inter500;
+export default async function handler(req: Request, env: Env) {
+  const [interRegular, interMedium] = await Promise.all([
+    loadAsset(env, '/fonts/Inter-Regular.ttf'),
+    loadAsset(env, '/fonts/Inter-Medium.ttf'),
+  ]);
 
   const { searchParams } = new URL(req.url);
 
@@ -32,7 +23,7 @@ export default async function handler(req: NextRequest) {
     tags: tags?.split(',') ?? [],
   };
 
-  return new ImageResponse(
+  return await ImageResponse.async(
     (
       <div
         style={{

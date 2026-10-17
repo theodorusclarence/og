@@ -1,26 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import { ImageResponse } from '@vercel/og';
+import { ImageResponse } from '@cf-wasm/og/workerd';
 import clsx from 'clsx';
-import { NextRequest } from 'next/server';
 import { CSSProperties } from 'react';
 
-import { deploymentURL } from '@/constant/env';
+import { defaultLogo, loadAsset } from '../assets';
 
-export const inter400 = fetch(
-  new URL('../../assets/Inter-Regular.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
-
-export const inter700 = fetch(
-  new URL('../../assets/Inter-Bold.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
-
-export const config = {
-  runtime: 'experimental-edge',
-};
-
-export default async function handler(req: NextRequest) {
-  const interRegular = await inter400;
-  const interBold = await inter700;
+export default async function handler(req: Request, env: Env) {
+  const [interRegular, interBold] = await Promise.all([
+    loadAsset(env, '/fonts/Inter-Regular.ttf'),
+    loadAsset(env, '/fonts/Inter-Bold.ttf'),
+  ]);
 
   const { searchParams } = new URL(req.url);
 
@@ -36,13 +25,13 @@ export default async function handler(req: NextRequest) {
     siteName: siteName ?? 'Site Name',
     description: description ?? 'Description',
     theme: theme ?? 'dark',
-    logo: logo ?? `${deploymentURL}/images/logo.jpg`,
+    logo: logo ?? (await defaultLogo(env)),
     templateTitle,
     logoWidth: logoWidth ? +logoWidth : 100,
     logoHeight: logoHeight ? +logoHeight : undefined,
   };
 
-  return new ImageResponse(
+  return await ImageResponse.async(
     (
       <div
         style={{
