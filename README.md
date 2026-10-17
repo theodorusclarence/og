@@ -16,7 +16,8 @@ caches every rendered image by URL.
 3. Optional: replace `public/images/logo.jpg` with your logo, same file name.
    It is the default logo when `logo` is not passed.
 4. `yarn deploy` (or connect the repo under Workers & Pages in Cloudflare with
-   build command `yarn build` and deploy command `npx wrangler deploy`).
+   build command `yarn build` and deploy command `npx wrangler deploy`). This
+   repo is connected that way, so every push to `main` deploys automatically.
 
 Local preview: `yarn preview` serves on http://localhost:8787.
 
